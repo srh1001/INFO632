@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
+
 
 // Cette fonction recherche un pattern dans un fichier.
 void chercher_pattern(char* pattern, char* fichier_pointeur) {
@@ -64,7 +66,7 @@ int main(int argc, char *argv[]) {
         printf("Nom du fichier : %s\n", fichiers[i]);
 
         fp = fopen(fichiers[i], "w"); // Ouverture en écriture du fichier créé.
-        fprintf(fp, "C'est le fichier n°%d créé.\nCette ligne contient le pattern AZERTY, à trouver.\n", i+1); // Écriture dans le fichier.
+        fprintf(fp, "C'est le fichier n°%d créé.\nCette ligne contient le pattern %s, à trouver.\n", i+1, pattern); // Écriture dans le fichier.
         fclose(fp); // Fermeture du fichier.
     }
 
@@ -74,7 +76,7 @@ int main(int argc, char *argv[]) {
     // Libération de la mémoire allouée pour les noms de fichiers et suppression des fichiers:
     for (int i = 0; i < nb_fichiers; i++) {
         remove(fichiers[i]);
-        free(fichier[i]);
+        free(fichiers[i]);
     }
 
     return 0;
