@@ -53,7 +53,6 @@ int main(int argc, char *argv[]) {
 
     char* pattern = argv[1];
     int nb_fichiers = atoi(argv[2]); // conversion de l'argument n°2 en integer, cet argument est le nombre de fichiers à créer.
-    int taille_max_nom = atoi(argv[3]); // conversion de l'argument n°3 en integer, cet argument est la taille maximale du nom des fichiers qui seront créés.
 
     // Création de fichiers pour tester les fonctions :
     FILE* fp;
@@ -75,6 +74,7 @@ int main(int argc, char *argv[]) {
     // Libération de la mémoire allouée pour les noms de fichiers et suppression des fichiers:
     for (int i = 0; i < nb_fichiers; i++) {
         remove(fichiers[i]);
+        free(fichier[i]);
     }
 
     return 0;
