@@ -13,7 +13,7 @@ int main() {
         exit(0);
     } else { // Process parent
         printf("Process parent %d a créé le process fils %d.\n", getpid(), pid);
-        sleep(10); // Le process parent dort pendant 10s => le process fils est zombie pendant 10s s'il est terminé.
+        sleep(10); // Le process parent dort pendant 10s => le process fils est zombie pendant 10s.
         wait(NULL); // Process parent récupère le statut du fils une fois celui-ci fini.
         printf("Le process parent a récupéré le statut du fils, ce dernier n'est plus un zombie.\n");
         exit(0);
